@@ -127,7 +127,7 @@ export default function UsersPage() {
     const targetYearCounts: Record<number, number> = {};
 
     users.forEach((user) => {
-      user.examTargets.forEach((exam) => {
+      user.examTargets?.forEach((exam) => {
         const normalizedExam = examTargetLabels[exam] || exam;
         examTargetCounts[normalizedExam] = (examTargetCounts[normalizedExam] || 0) + 1;
       });
@@ -371,7 +371,7 @@ export default function UsersPage() {
                           <div className="space-y-1">
                             <div className="flex items-center gap-2 text-sm">
                               <Mail className="w-3.5 h-3.5 text-gray-400" />
-                              <span className="truncate max-w-[180px]">{user.email}</span>
+                              <span className="break-all">{user.email}</span>
                             </div>
                             <div className="flex items-center gap-2 text-sm text-gray-500">
                               <Phone className="w-3.5 h-3.5 text-gray-400" />
@@ -381,7 +381,7 @@ export default function UsersPage() {
                         </TableCell>
                         <TableCell>
                           <div className="flex flex-wrap gap-1">
-                            {user.examTargets.map((exam, idx) => (
+                            {user.examTargets?.map((exam, idx) => (
                               <Badge
                                 key={idx}
                                 variant="outline"
